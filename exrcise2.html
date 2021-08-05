@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>Excise 2</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-size: 12px;
+        font-family: "Roboto Light",sans-serif ;
+        background-color: #f2f3f8;
+        color: #4f4f4f;
+    }
+    .container {
+        width: 100%;
+        display: flex;
+    }
+    .d-none {
+        display: none;
+    }
+    .header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .header img {
+        width: 18px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+    .nav {
+        height: auto;
+        background-color: #1c1b28;
+        max-width: 300px;
+        color: #848484;
+    }
+    ul {
+        padding: 0 15px;
+    }
+    li {
+        margin-bottom: 25px;
+        list-style-type: none;
+        cursor: pointer;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 24px;
+
+    }
+    .logo img {
+        width: 180px;
+        margin-right: 20px;
+    }
+    .title-nav {
+        margin-top: 15px;
+    }
+    .text-al-center {
+        text-align: center;
+    }
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .list:hover {
+        color: #ffffff;
+    }
+    .color {
+        color: #ffffff;
+    }
+    .container-right {
+        width: 100%;
+
+    }
+    .main {
+        /*height: calc(100vh - 42px);*/
+    }
+    .main-content {
+        margin: 20px;
+        /*height: 100%;*/
+    }
+    .table-manage {
+        background-color: #ffffff;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        height: 48px;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom: 1px solid #cccccc;
+    }
+    .header-left i {
+        margin-right: 5px;
+        color: #405ef7;
+    }
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+    .header-right i {
+        margin-right: 4px;
+    }
+    .btn-list {
+        margin-right: 15px;
+        padding: 0 10px;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        height: 32px;
+        line-height: 32px;
+    }
+    .btn-add {
+        padding: 0 10px;
+        border: 1px solid #55cda6;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 3px;
+        background-color: #55cda6;
+        color: #f2f2f2;
+    }
+    .content {
+        margin: 20px 20px 30px 20px;
+
+    }
+    table, th, td {
+        border: 1px solid #cccccc;
+        border-collapse: collapse;
+        font-weight: 400;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+        min-height: 42px;
+        height: 42px;
+    }
+    table {
+        width: 100%;
+    }
+    .id-guest {
+        color: #959ef4;
+    }
+    .processing {
+        display: block;
+        padding: 5px 10px;
+        background-color: #cfd1d6;
+        color: #4668f2;
+        border-radius: 2px;
+        width: 80px;
+        /*margin: auto;*/
+        text-align: center;
+
+    }
+    .waiting {
+        display: block;
+        padding: 5px 10px;
+        background-color: #fff1d6;
+        color: #ffcc64;
+        border-radius: 2px;
+        width: 80px;
+        /*margin: auto;*/
+        text-align: center;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .list-left i {
+        width: 20px;
+    }
+    .sub-list {
+        margin-top: 20px;
+    }
+    .sub-list li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+    .sub-name:hover {
+        color: #ffffff;
+    }
+    .dd-none {
+        display: none;
+    }
+    .hideShow {
+        display: none;
+    }
+    .header-main {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 20px;background-color: #ffffff;
+        height: 42px;
+    }
+    @media (max-width: 768px) {
+        .nav {
+            display: none;
+            z-index: 2;
+            position: absolute;
+        }
+        #showHide {
+            display: none;
+        }
+        .hideShow {
+            display: block;
+        }
+        .table-manage {
+            overflow: auto;
+        }
+        .main-content {
+            margin: 20px 10px;
+        }
+        .header-content {
+            padding-right: 5px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-main {
+            justify-content: space-between;
+        }
+    }
+
+</style>
+<body>
+<div class="container">
+    <div class="nav">
+        <ul>
+            <li class="logo">
+                <img src="image/logo.png">
+                <div id="showHide" data-show="true">
+                    <i class="fas fa-angle-double-left"></i>
+                    <i class="fas fa-angle-double-right dd-none"></i>
+                </div>
+                <i onclick="hideMenu()" class="hideShow fas fa-times"></i>
+            </li>
+            <li class="title-nav text-al-center">HOOSIERS LIVING</li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                    <div class="list-left">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Bảng điều khiển</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                    <div class="list-left">
+                        <i class="fab fa-telegram-plane"></i>
+                        <span>Quản lý yêu cầu</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Quản lý phản hồi</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-rocket"></i>
+                    <span>Đăng ký tiện ích</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Quản lý khách</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-truck"></i>
+                    <span>Quản lý thông báo lễ tân</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="far fa-bell"></i>
+                    <span>Quản lý thông báo</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Quản lý sự kiện</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-home"></i>
+                    <span>Quản lý tòa nhà</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Quản lý nhân viên</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="fas fa-users"></i>
+                    <span>Quản lý cư dân</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+            <li>
+                <div class="list" onclick="toggleMenu(this)">
+                <div class="list-left">
+                    <i class="far fa-file-alt"></i>
+                    <span>Quản lý tài liệu</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-chevron-down d-none"></i>
+                </div>
+                <ul class="sub-list d-none">
+                    <li class="sub-name">Thêm mới</li>
+                    <li class="sub-name">Danh sách</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container-right">
+        <div class="header-main">
+            <i onclick="showMenu()" class="hideShow fas fa-bars"></i>
+            <div class="header">
+                <img src="image/220-vietnam.svg">
+                <div class="user-name">
+                    <span>Hi, <strong>Hung Phung Management Office</strong></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="main">
+            <div class="main-content">
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="fab fa-telegram-plane"></i>
+                            <span>Quản lý yêu cầu</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <div class="btn-add">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Thêm mới</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Phòng</th>
+                                    <th>Tên</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Mức độ nghiêm trọng</th>
+                                    <th>Loại</th>
+                                    <th>Danh mục</th>
+                                    <th>Vị trí</th>
+                                    <th>Mức độ hài lòng</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                                <tr>
+                                    <td class="id-guest">JR-003</td>
+                                    <td>T1-1001</td>
+                                    <td>Trần Thị Thanh Tâm</td>
+                                    <td>0938707120</td>
+                                    <td class="text-center"><span class="processing">Đang xử lý</span></td>
+                                    <td>Cực kỳ nghiêm trọng, khẩn cấp</td>
+                                    <td>Sửa chữa hệ thống</td>
+                                    <td>Tủ điện</td>
+                                    <td>Phòng khách</td>
+                                    <td></td>
+                                    <td>28-10-2020 14:35</td>
+                                </tr>
+                                <tr>
+                                    <td class="id-guest">JR-003</td>
+                                    <td>T1-1001</td>
+                                    <td>Trần Thị Thanh Tâm</td>
+                                    <td>0938707120</td>
+                                    <td class="text-center"><span class="waiting">Chờ xử lý</span></td>
+                                    <td>Cực kỳ nghiêm trọng, khẩn cấp</td>
+                                    <td>Sửa chữa hệ thống</td>
+                                    <td>Tủ điện</td>
+                                    <td>Phòng khách</td>
+                                    <td></td>
+                                    <td>28-10-2020 14:35</td>
+                                </tr>
+                                <tr>
+                                    <td class="id-guest">JR-003</td>
+                                    <td>T1-1001</td>
+                                    <td>Trần Thị Thanh Tâm</td>
+                                    <td>0938707120</td>
+                                    <td class="text-center"><span class="waiting">Chờ xử lý</span></td>
+                                    <td>Cực kỳ nghiêm trọng, khẩn cấp</td>
+                                    <td>Sửa chữa hệ thống</td>
+                                    <td>Tủ điện</td>
+                                    <td>Phòng khách</td>
+                                    <td></td>
+                                    <td>28-10-2020 14:35</td>
+                                </tr>
+                                <tr>
+                                    <td class="id-guest">JR-003</td>
+                                    <td>T1-1001</td>
+                                    <td>Trần Thị Thanh Tâm</td>
+                                    <td>0938707120</td>
+                                    <td class="text-center"><span class="processing">Đang xử lý</span></td>
+                                    <td>Cực kỳ nghiêm trọng, khẩn cấp</td>
+                                    <td>Sửa chữa hệ thống</td>
+                                    <td>Tủ điện</td>
+                                    <td>Phòng khách</td>
+                                    <td></td>
+                                    <td>28-10-2020 14:35</td>
+                                </tr>
+                                <tr>
+                                    <td class="id-guest">JR-003</td>
+                                    <td>T1-1001</td>
+                                    <td>Trần Thị Thanh Tâm</td>
+                                    <td>0938707120</td>
+                                    <td class="text-center"><span class="waiting">Chờ xử lý</span></td>
+                                    <td>Cực kỳ nghiêm trọng, khẩn cấp</td>
+                                    <td>Sửa chữa hệ thống</td>
+                                    <td>Tủ điện</td>
+                                    <td>Phòng khách</td>
+                                    <td></td>
+                                    <td>28-10-2020 14:35</td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <span>Quản lý phản hồi</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <div class="btn-add">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Thêm mới</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Phòng</th>
+                                    <th>Tên</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Loại</th>
+                                    <th>Danh mục</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="fas fa-rocket"></i>
+                            <span>Đăng ký tiện ích</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <div class="btn-add">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Thêm mới</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Phòng</th>
+                                    <th>Tên</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Tiện ích</th>
+                                    <th>Ngày sử dụng</th>
+                                    <th>Thời gian</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Quản lý khách</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <div class="btn-add">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Thêm mới</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Phòng</th>
+                                    <th>Tên</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Tên khách</th>
+                                    <th>Số điện thoại khách</th>
+                                    <th>Lý do</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Thời gian kết thúc</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="10" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="fas fa-truck"></i>
+                            <span>Quản lý thông báo lễ tân</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list" style="margin-right: unset">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <!--<div class="btn-add">-->
+                            <!--    <i class="fas fa-plus-circle"></i>-->
+                            <!--    <span>Thêm mới</span>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Phòng</th>
+                                    <th>Tên</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Danh mục</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="far fa-bell"></i>
+                            <span>Quản lý thông báo</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list" style="margin-right: unset">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <!--<div class="btn-add">-->
+                            <!--    <i class="fas fa-plus-circle"></i>-->
+                            <!--    <span>Thêm mới</span>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Loại thông báo</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Thời gian kết thúc</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-manage">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Quản lý sự kiện</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="btn-list">
+                                <i class="fas fa-bars"></i>
+                                <span>Danh sách</span>
+                            </div>
+                            <div class="btn-add">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Thêm mới</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Loại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Đăng ký tham dự</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Thời gian kết thúc</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <i class="fas fa-calendar-times"></i>
+                                        <i>Không có dữ liệu</i>
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        const el = document.getElementById('showHide')
+        el.addEventListener('click', () => {
+            console.log(el.getAttribute('data-show'))
+            if (el.getAttribute('data-show') === 'true') {
+                el.setAttribute('data-show', 'false')
+                el.lastElementChild.classList.remove('dd-none')
+                el.firstElementChild.classList.add('dd-none')
+                document.querySelectorAll('.list-left>span').forEach(el => {
+                    el.classList.add('dd-none')
+                })
+                document.querySelectorAll('.list>i').forEach(el => {
+                    el.classList.add('dd-none')
+                })
+                document.querySelectorAll('.title-nav').forEach(el => {
+                    el.classList.add('dd-none')
+                })
+                document.querySelectorAll('.logo>img').forEach(el => {
+                    el.classList.add('dd-none')
+                })
+
+            }else {
+                console.log('test')
+                el.setAttribute('data-show', 'true')
+                el.lastElementChild.classList.add('dd-none')
+                el.firstElementChild.classList.remove('dd-none')
+                document.querySelectorAll('.list-left>span').forEach(el => {
+                    el.classList.remove('dd-none')
+                })
+                document.querySelectorAll('.list>i').forEach(el => {
+                    el.classList.remove('dd-none')
+                })
+                document.querySelectorAll('.title-nav').forEach(el => {
+                    el.classList.remove('dd-none')
+                })
+                document.querySelectorAll('.logo>img').forEach(el => {
+                    el.classList.remove('dd-none')
+                })
+            }
+        })
+        function toggleMenu(param) {
+            const arrEl = param.parentElement.lastElementChild.className
+            if (arrEl.indexOf('d-none') !== -1) {
+                param.parentElement.lastElementChild.classList.remove('d-none')
+                param.classList.add('color')
+                param.lastElementChild.classList.remove('d-none')
+                param.childNodes[3].classList.add('d-none')
+            } else {
+                param.parentElement.lastElementChild.classList.add('d-none')
+                param.classList.remove('color')
+                param.lastElementChild.classList.add('d-none')
+                param.childNodes[3].classList.remove('d-none')
+            }
+        }
+
+        function showMenu() {
+            document.querySelector('.nav').style.display = 'block'
+        }
+
+        function hideMenu() {
+            document.querySelector('.nav').style.display = 'none'
+        }
+
+    </script>
+</body>
+</html>

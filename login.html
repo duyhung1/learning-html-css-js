@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: "Roboto Light",sans-serif;
+        font-size: 12px;
+        color: #4f4f4f;
+        background-image: url(./image/background.jpeg);
+        background-repeat: no-repeat;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        height: 100vh;
+    }
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 15%;
+    }
+    .logo {
+       width: 180px;
+    }
+    .title {
+        font-weight: 400;
+        margin: 35px 0;
+    }
+    .form-login {
+
+    }
+    .text-input input {
+        max-width: 400px;
+        width: 400px;
+        height: 40px;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        padding-left: 12px;
+        background-color: #f2f2f2;
+        margin-bottom: 20px;
+    }
+    .text-input input:focus-visible {
+        box-shadow: 0 0 10px #cccccc;
+        outline: 1px solid #cccccc;
+        border-radius: 0;
+    }
+    .login-password {
+        position: relative;
+    }
+    .login-password svg {
+        position: absolute;
+        right: 15px;
+        top: 12px;
+        cursor: pointer;
+    }
+    .login-remember {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    .checkbox {
+        display: flex;
+        align-items: center;
+    }
+    .checkbox input {
+        margin-right: 8px;
+        cursor: pointer;
+        border: 1px solid #cccccc;
+    }
+    .checkbox input:hover {
+        box-shadow: 0 0 3px #4678f4;
+    }
+    .forget-password a{
+        text-decoration: none;
+        color: #4f4f4f;
+        cursor: pointer;
+    }
+    .forget-password a:hover{
+        color: #111111;
+    }
+    .btn-submit {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #4678f4;
+        color: #f2f2f2;
+        border-radius: 3px;
+        border: 1px solid #4678f4;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #1947ff;
+        border: 1px solid #1947ff;
+    }
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mr-10 {
+        margin-right: 10px;
+    }
+    .language {
+        display: flex;
+        line-height: 20px;
+    }
+    .language img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    @media (max-width: 767.98px) {
+        .container {
+            width: 100%;
+        }
+        .text-input input {
+            width: 90%;
+        }
+    }
+
+</style>
+<body>
+<div class="container">
+    <div class="login-wrapper">
+        <img alt="Sims" src="./image/logo.png" class="logo">
+        <h2 class="title">Đăng Nhập</h2>
+        <div class="form-login">
+            <form>
+                <div class="text-input login-email">
+                    <input type="text" name="email" placeholder="Email">
+                </div>
+                <div class="text-input login-password">
+                    <input type="password" id="password" name="password" placeholder="Mật khẩu">
+                    <svg id="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-.199.02-.393.057-.581 1.474.541 2.927-.882 2.405-2.371.174-.03.354-.048.538-.048 1.657 0 3 1.344 3 3zm-2.985-7c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 12c-2.761 0-5-2.238-5-5 0-2.761 2.239-5 5-5 2.762 0 5 2.239 5 5 0 2.762-2.238 5-5 5z"/></svg>
+                </div>
+                <div class="login-remember">
+                    <label class="checkbox">
+                        <input type="checkbox" class="checkbox-input" name="remember" value="true" >
+                        <span>Lưu mật khẩu</span>
+                    </label>
+                    <div class="forget-password">
+                        <a href="#">Quên mật khẩu</a>
+                    </div>
+                </div>
+                <div class="btn-submit">
+                    <button class="btn" type="submit">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <span class="mr-10">Ngôn ngữ</span>
+            <span class="language mr-10">
+                <img src="image/220-vietnam.svg" alt="Tiếng việt">
+                Tiếng Việt
+            </span>
+            <span class="language">
+                <img src="image/226-united-states.svg" alt="Tiếng anh">
+                Tiếng Anh
+            </span>
+        </div>
+    </div>
+</div>
+<script>
+    const inputPassword = document.getElementById('password')
+    inputPassword.addEventListener('input', () => {
+        if(inputPassword.value.length <= 0) {
+            inputPassword.type = 'password'
+        }
+    })
+    document.getElementById('showPassword').addEventListener('click', () => {
+        if(inputPassword.type ==='password' && inputPassword.value.length > 0) {
+            inputPassword.type = 'text'
+        } else {
+            inputPassword.type = 'password'
+        }
+    })
+</script>
+</body>
+</html>
